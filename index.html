@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eqaring — High-Risk Acquiring Sandbox</title>
+  <meta name="description" content="Test high-risk payment processing, fraud detection, and chargeback scenarios in a safe sandbox environment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="global-sandbox-banner">
+      <div class="global-sandbox-banner-label">Sandbox</div>
+      <div class="global-sandbox-banner-text">You're testing in a sandbox. Changes you make here don't affect your live account.</div>
+    </div>
+    <!-- Top bar — content area only (right of sidebar) -->
+    <header class="topbar" id="topbar">
+      <div class="global-search" id="global-search">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <span>Search</span>
+      </div>
+
+      <div class="topbar-center">
+        <span class="topbar-message">Sandboxes are the new way to test.<a href="#">Learn more</a></span>
+      </div>
+
+      <div class="topbar-right">
+        <button class="icon-btn" id="btn-docs" title="API Docs">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M4 2h8a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M6 5h4M6 7.5h3M6 10h4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btn-question" title="Help">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M6.5 6.5a1.5 1.5 0 0 1 3 0c0 1-1.5 1-1.5 2M8 11v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btn-bell" title="Alerts">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M4 6a4 4 0 0 1 8 0c0 4 2 5 2 5H2s2-1 2-5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M6 13a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btn-settings" title="Settings">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="icon-btn icon-btn-accent" id="btn-create" title="Create test payment">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="compliance-trigger" id="compliance-trigger">
+          <span>Compliance</span>
+          <svg class="compliance-progress-ring" width="18" height="18" viewBox="0 0 20 20">
+            <circle cx="10" cy="10" r="8" fill="none" stroke="#E2E8F0" stroke-width="2.5"/>
+            <circle cx="10" cy="10" r="8" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="50.27" stroke-dashoffset="12.57" stroke-linecap="round" transform="rotate(-90 10 10)"/>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <!-- Account picker at top of sidebar -->
+        <div class="sidebar-account" id="account-picker" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+          <div class="account-picker-icon">
+            <svg width="26" height="26" viewBox="0 0 18 18" fill="none">
+              <rect width="18" height="18" rx="4" fill="#E5E7EB"/>
+              <text x="9" y="12.5" text-anchor="middle" font-size="9" font-weight="500" fill="#4B5563" font-family="Roboto, sans-serif">L</text>
+            </svg>
+          </div>
+          <div class="account-picker-info">
+            <span class="account-name">Apex Payments</span>
+            <span class="account-sub">Demo Merchant</span>
+          </div>
+          <svg class="account-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#/" class="nav-item active" data-page="dashboard" id="nav-home">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <rect x="10" y="1.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <rect x="1.5" y="10" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+              <rect x="10" y="10" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+            </svg>
+            <span>Overview</span>
+          </a>
+          <a href="#/transactions" class="nav-item" data-page="transactions" id="nav-transactions" style="display: none;">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <path d="M2 4.5h13M2 8.5h13M2 12.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span>Transactions</span>
+          </a>
+          <a class="nav-item disabled" id="nav-disputes">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <path d="M8.5 2L2 14h13L8.5 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M8.5 7v3M8.5 12v.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span>Disputes</span>
+          </a>
+          <a class="nav-item disabled" id="nav-risk">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <path d="M8.5 1.5l6 3v4.5c0 3.5-2.5 6-6 7.5-3.5-1.5-6-4-6-7.5V4.5l6-3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+              <path d="M6 8.5l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Risk & Fraud</span>
+          </a>
+          <a class="nav-item disabled" id="nav-merchants">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <rect x="2" y="3" width="13" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M2 6.5h13" stroke="currentColor" stroke-width="1.3"/>
+              <circle cx="12" cy="10" r="1" fill="currentColor"/>
+            </svg>
+            <span>Merchants</span>
+          </a>
+          <a class="nav-item disabled" id="nav-customers">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+              <circle cx="8.5" cy="5.5" r="3" stroke="currentColor" stroke-width="1.3"/>
+              <path d="M3 15c0-3 2.5-5.5 5.5-5.5S14 12 14 15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span>Customers</span>
+          </a>
+
+          <div class="nav-section">
+            <div class="nav-section-label">Platform</div>
+            <a class="nav-item has-chevron disabled" id="nav-payouts">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path d="M2 8.5h9M8 5.5l3 3-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 3v11" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+              <span>Payouts</span>
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 5l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav-item has-chevron disabled" id="nav-compliance">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <rect x="3" y="2" width="11" height="13" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M6 6h5M6 8.5h4M6 11h5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              </svg>
+              <span>Compliance</span>
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 5l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav-item has-chevron disabled" id="nav-reporting">
+              <svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+                <path d="M2 13l3-5 3 2.5 3-6 3.5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Reporting</span>
+              <svg class="nav-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 5l2 2 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </nav>
+
+        </aside>
+
+      <!-- Main Content -->
+      <main class="main" id="main-content">
+        <!-- Populated by JS router -->
+      </main>
+    </div>
+
+    <!-- Bottom Bar -->
+    <footer class="bottom-bar" id="bottom-bar">
+      <div class="bottom-bar-left">
+        <span class="bottom-bar-env">eqaring sandbox v0.1</span>
+      </div>
+      <div class="bottom-bar-right">
+        <button class="bottom-bar-icon" title="System Status">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M7 4v3h2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="bottom-bar-icon" title="Logs">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 3h10M2 6h7M2 9h10M2 12h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="bottom-bar-icon" title="Feedback">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 2h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5l-3 3V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
