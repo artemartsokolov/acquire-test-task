@@ -174,23 +174,42 @@
     <!-- Bottom Bar -->
     <footer class="bottom-bar" id="bottom-bar">
       <div class="bottom-bar-left">
-        <span class="bottom-bar-env">eqaring sandbox v0.1</span>
-      </div>
-      <div class="bottom-bar-right">
-        <button class="bottom-bar-icon" title="System Status">
+        <button class="bottom-bar-dev-toggle" title="Developers">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M7 4v3h2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4 5l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 9h2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          <span>Developers</span>
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" style="opacity:0.6;">
+            <path d="M1.5 5L4 2.5 6.5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button class="bottom-bar-icon" title="Logs">
+      </div>
+      <div class="bottom-bar-right">
+        <button class="bottom-bar-icon" title="API Logs">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 3h10M2 6h7M2 9h10M2 12h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M4 4h6M4 7h4M4 10h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button class="bottom-bar-icon" title="Webhooks">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1v4M7 9v4M1 7h4M9 7h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="7" cy="7" r="2" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </button>
+        <button class="bottom-bar-icon" title="Events">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M7 1L1 12h12L7 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M7 5.5v3M7 10v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </button>
         <button class="bottom-bar-icon" title="Feedback">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 2h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5l-3 3V3a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4.5 9c.7.8 1.5 1.2 2.5 1.2s1.8-.4 2.5-1.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="5" cy="5.5" r="0.7" fill="currentColor"/>
+            <circle cx="9" cy="5.5" r="0.7" fill="currentColor"/>
           </svg>
         </button>
       </div>

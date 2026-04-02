@@ -336,10 +336,12 @@ function renderDashboard() {
             <div class="balance-value">${formatAmount(11692950)}</div>
           </div>
           <div class="balance-item">
-            <div class="payout-error">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L1 12h12L7 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M7 5v3M7 10v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-              <span>Couldn't load payouts.</span>
+            <div class="balance-label">
+              <span class="balance-label-text">Next payout</span>
+              <a class="balance-view-link">View</a>
             </div>
+            <div class="balance-value">${formatAmount(8475000)}</div>
+            <div style="font-size:12px;color:var(--text-tertiary);margin-top:2px;">Expected Apr 4, 2026</div>
           </div>
         </div>
 
@@ -383,24 +385,19 @@ function renderDashboard() {
         </div>
 
         <div class="metric-grid">
-          <!-- Card 1: Payments (donut) -->
+          <!-- Card 1: Approval Rate -->
           <div class="metric-card">
             <div class="metric-card-header">
-              <span class="metric-card-title">Payments</span>
+              <span class="metric-card-title">Approval Rate</span>
               ${infoIcon}
             </div>
-            <div class="donut-chart-wrap">
-              <svg class="donut-chart" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#E2E8F0" stroke-width="8"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#4F46E5" stroke-width="8"
-                  stroke-dasharray="${(succeededCount / TRANSACTIONS.length) * 238.76} 238.76"
-                  stroke-linecap="round" transform="rotate(-90 50 50)"/>
-                <circle cx="50" cy="50" r="38" fill="none" stroke="#DC2626" stroke-width="8"
-                  stroke-dasharray="${(failedCount / TRANSACTIONS.length) * 238.76} 238.76"
-                  stroke-dashoffset="${-(succeededCount / TRANSACTIONS.length) * 238.76}"
-                  transform="rotate(-90 50 50)"/>
-                <text x="50" y="48" text-anchor="middle" font-size="14" font-weight="700" fill="#111827" font-family="Roboto Mono, monospace">${TRANSACTIONS.length}</text>
-                <text x="50" y="60" text-anchor="middle" font-size="7" fill="#9CA3AF" font-family="Roboto, sans-serif">payments</text>
+            <div class="metric-card-value" style="font-size:2rem;">${((succeededCount / TRANSACTIONS.length) * 100).toFixed(1)}%</div>
+            <div class="metric-card-compare">${succeededCount} of ${TRANSACTIONS.length} succeeded</div>
+            <div class="metric-mini-chart" style="height:40px;position:relative;">
+              <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none" style="position:absolute;inset:0;">
+                <defs><linearGradient id="arFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,30 L14,28 L28,22 L42,25 L56,15 L70,12 L84,10 L100,8 L100,40 L0,40 Z" fill="url(#arFill)"/>
+                <path d="M0,30 L14,28 L28,22 L42,25 L56,15 L70,12 L84,10 L100,8" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>
               </svg>
             </div>
             <div class="metric-card-footer">
@@ -418,9 +415,12 @@ function renderDashboard() {
             </div>
             <div class="metric-card-value">${formatAmount(total)}</div>
             <div class="metric-card-compare">€0.00 previous period</div>
-            <div class="metric-mini-chart">
-              <span class="mini-chart-y-label">€0.01</span>
-              <div class="mini-chart-baseline"></div>
+            <div class="metric-mini-chart" style="height:40px;position:relative;">
+              <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none" style="position:absolute;inset:0;">
+                <defs><linearGradient id="pvFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,35 L14,30 L28,32 L42,20 L56,25 L70,12 L84,8 L100,5 L100,40 L0,40 Z" fill="url(#pvFill)"/>
+                <path d="M0,35 L14,30 L28,32 L42,20 L56,25 L70,12 L84,8 L100,5" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              </svg>
             </div>
             <div class="metric-card-footer">
               <span class="metric-card-date-range"><span>Mar 25</span><span>Mar 31</span></span>
@@ -437,9 +437,12 @@ function renderDashboard() {
             </div>
             <div class="metric-card-value">${formatAmount(totalNet)}</div>
             <div class="metric-card-compare">€0.00 previous period</div>
-            <div class="metric-mini-chart">
-              <span class="mini-chart-y-label">€0.01</span>
-              <div class="mini-chart-baseline"></div>
+            <div class="metric-mini-chart" style="height:40px;position:relative;">
+              <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none" style="position:absolute;inset:0;">
+                <defs><linearGradient id="nvFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,36 L14,28 L28,30 L42,18 L56,22 L70,10 L84,6 L100,4 L100,40 L0,40 Z" fill="url(#nvFill)"/>
+                <path d="M0,36 L14,28 L28,30 L42,18 L56,22 L70,10 L84,6 L100,4" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              </svg>
             </div>
             <div class="metric-card-footer">
               <span class="metric-card-date-range"><span>Mar 25</span><span>Mar 31</span></span>
@@ -473,8 +476,12 @@ function renderDashboard() {
             </div>
             <div class="metric-card-value">${failedCount}</div>
             <div class="metric-card-compare">${formatAmount(3200)} total failed</div>
-            <div class="metric-mini-chart">
-              <div class="mini-chart-baseline" style="background: var(--error);"></div>
+            <div class="metric-mini-chart" style="height:40px;position:relative;">
+              <svg width="100%" height="100%" viewBox="0 0 100 40" preserveAspectRatio="none" style="position:absolute;inset:0;">
+                <defs><linearGradient id="fdFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--danger)" stop-opacity="0.15"/><stop offset="100%" stop-color="var(--danger)" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0,38 L14,38 L28,38 L42,38 L56,38 L70,20 L84,25 L100,38 L100,40 L0,40 Z" fill="url(#fdFill)"/>
+                <path d="M0,38 L14,38 L28,38 L42,38 L56,38 L70,20 L84,25 L100,38" fill="none" stroke="var(--danger)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              </svg>
             </div>
             <div class="metric-card-footer">
               <span class="metric-card-date-range"><span>Mar 25</span><span>Mar 31</span></span>
@@ -610,7 +617,7 @@ function renderDashboard() {
                 <td>
                   <div class="dt-amount-cell">
                     <strong>€75.00 EUR</strong>
-                    <span class="dt-badge-disputed">Disputed <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="5" cy="7.5" r="0.5" fill="currentColor"/></svg></span>
+                    <span class="dt-badge-disputed">Disputed <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M5 4v2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="5" cy="3" r="0.6" fill="currentColor"/></svg></span>
                   </div>
                 </td>
                 <td>
@@ -628,7 +635,7 @@ function renderDashboard() {
             </tbody>
           </table>
           <div class="dt-table-footer" style="padding-top: 16px;">
-            <a href="#/transactions" style="color:var(--accent);font-weight:600;font-size:0.857rem;text-decoration:none;">View all transactions &rarr;</a>
+            <span style="color:var(--accent);font-weight:600;font-size:0.857rem;">View all transactions &rarr;</span>
           </div>
     </div>
   `;

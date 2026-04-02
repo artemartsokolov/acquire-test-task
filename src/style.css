@@ -92,7 +92,7 @@
   --topbar-height: 56px;
   --subheader-height: 0px;
   --sidebar-width: 200px;
-  --bottom-bar-height: 32px;
+  --bottom-bar-height: 36px;
 }
 
 html {
@@ -449,16 +449,16 @@ body {
   left: 0;
   right: 0;
   height: var(--bottom-bar-height);
-  background: var(--bg-secondary);
+  background: #F6F8FA;
   border-top: 1px solid var(--border-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--space-3);
+  padding: 0 var(--space-2);
   z-index: 200;
 }
 
-.bottom-bar-left { display: flex; align-items: center; }
+.bottom-bar-left { display: flex; align-items: center; height: 100%; }
 
 .bottom-bar-env {
   font-size: 0.643rem;
@@ -479,7 +479,7 @@ body {
   border-radius: var(--radius-sm);
   border: none;
   background: transparent;
-  color: var(--text-tertiary);
+  color: #5E6C84;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -489,7 +489,36 @@ body {
 
 .bottom-bar-icon:hover {
   background: var(--bg-hover);
-  color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.bottom-bar-dev-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: #5E6C84;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.bottom-bar-dev-toggle:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-bar-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border-secondary);
+  margin: 0 4px;
 }
 
 /* ================================================================
@@ -575,10 +604,10 @@ body {
 
 .metric-top-time {
   font-size: 0.857rem;
-  color: var(--text-primary);
+  color: var(--text-tertiary);
   font-weight: 400;
   font-family: var(--font-family);
-  margin-top: 8px;
+  margin-top: 2px;
 }
 
 .metric-top-comparison {
@@ -654,11 +683,12 @@ body {
 }
 
 .api-card-section {
-  padding: var(--space-5) var(--space-6);
+  padding: var(--space-3) var(--space-6);
 }
 
 .api-card-section + .api-card-section {
   border-top: 1px solid var(--border-secondary);
+  padding-top: calc(var(--space-3) + 8px);
 }
 
 .api-card-header {
@@ -878,7 +908,7 @@ body {
 /* --- Empty Chart --- */
 .chart-empty {
   background: var(--bg-secondary);
-  margin-bottom: var(--space-6);
+  margin-bottom: 32px;
   height: 140px;
   display: flex;
   flex-direction: column;
@@ -1016,7 +1046,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: var(--space-12);
-  padding: var(--space-5) 0;
+  padding: 0 0 var(--space-5) 0;
   border-bottom: 1px solid var(--border-secondary);
   margin-bottom: var(--space-8);
 }
@@ -2257,14 +2287,4 @@ body {
   color: var(--text-secondary);
 }
 
-/* ================================================================
-   Responsive — Desktop only (min-width: 1024px expected)
-   ================================================================ */
-@media (max-width: 1024px) {
-  .float-card { position: static; width: 100%; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
-  .metric-grid { grid-template-columns: repeat(2, 1fr); }
-  .detail-grid { grid-template-columns: 1fr; }
-  .today-grid { flex-direction: column; }
-  .today-right { width: 100%; }
-  .today-right .api-keys-card { position: static; }
-}
+/* Desktop-only dashboard — no responsive breakpoints */
