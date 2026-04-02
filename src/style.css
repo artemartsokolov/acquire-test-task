@@ -2258,18 +2258,13 @@ body {
 }
 
 /* ================================================================
-   Responsive
+   Responsive — Desktop only (min-width: 1024px expected)
    ================================================================ */
 @media (max-width: 1024px) {
   .float-card { position: static; width: 100%; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm); }
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
   .detail-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  .sidebar { transform: translateX(-100%); }
-  .main { margin-left: 0; }
-  .page { padding: var(--space-5) var(--space-4); }
-  .metric-grid { grid-template-columns: 1fr; }
-  .topbar-submessage { display: none; }
+  .today-grid { flex-direction: column; }
+  .today-right { width: 100%; }
+  .today-right .api-keys-card { position: static; }
 }

@@ -748,7 +748,7 @@ function renderTransactionDetail(txnId) {
         <div class="txn-dp-section-header">
           <h3>Transaction details</h3>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:4px;">
+        <div class="txn-details-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:4px;">
           <div>
             <div style="font-size:13px;color:var(--text-secondary);margin-bottom:4px;">Type</div>
             <div style="font-size:14px;"><a href="#" style="color:var(--accent);text-decoration:none;font-weight:400;">One-time payment</a></div>
@@ -772,7 +772,7 @@ function renderTransactionDetail(txnId) {
 
       <!-- DUAL CARD: Breakdown + Amount -->
       <div class="txn-dp-section">
-        <div style="display:grid;grid-template-columns:1fr 280px;gap:24px;">
+        <div class="txn-breakdown-grid" style="display:grid;grid-template-columns:1fr 280px;gap:24px;">
           <div>
             <div style="font-size:14px;font-weight:700;margin-bottom:8px;">Payment Breakdown</div>
             <div class="txn-dp-kv-row">
